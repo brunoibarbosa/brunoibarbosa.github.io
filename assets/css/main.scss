@@ -190,7 +190,7 @@ main > section:nth-child(n+2) {
         position: absolute;
         width: 0;
         height: 100vh;
-        background: $preto;
+        background: lighten($preto, 20%);
         opacity: .4;
         right: -100vw;
         top: 0;
@@ -380,6 +380,52 @@ main > section:nth-child(n+2) {
     }
 }
 
+#portfolio {
+    .repo-github {
+        color: $branco;
+
+        .card {
+            width: 100%;
+            min-height: 300px;
+
+            @include flex();
+        }
+
+        .js-carousel::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+#contact {
+    ul {
+        margin-top: 4rem;
+    }
+    
+    li + li {
+        margin-top: 15px;
+    }
+
+    a {
+        @include flex();
+        display: inline-flex;
+        font-size: 1.1rem;
+        color: $branco;
+        text-decoration: none;
+        width: fit-content;
+
+        &:hover {
+            color: $cor-principal;
+        }
+    }
+
+    img {
+        filter: invert(1);
+        width: 35px;
+        margin-right: 10px;
+    }
+}
+
 #links {
     padding-bottom: 5rem;
 
@@ -393,9 +439,11 @@ main > section:nth-child(n+2) {
 
     a { 
         @include flex();
+        display: inline-flex;
         text-decoration: none;
         color: $branco;
         font-size: 1.1rem;
+        width: fit-content;
 
         &:hover {
             color: $cor-principal;

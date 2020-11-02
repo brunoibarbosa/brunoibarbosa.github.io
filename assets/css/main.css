@@ -237,7 +237,7 @@ main > section:nth-child(n+2) h1::after {
   position: absolute;
   width: 0;
   height: 100vh;
-  background: #121212;
+  background: #454545;
   opacity: .4;
   right: -100vw;
   top: 0;
@@ -463,6 +463,68 @@ main > section:nth-child(n+2) h1::after {
   width: 45px;
 }
 
+#portfolio .repo-github {
+  color: #fefefe;
+}
+
+#portfolio .repo-github .card {
+  width: 100%;
+  min-height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#portfolio .repo-github .js-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+#contact ul {
+  margin-top: 4rem;
+}
+
+#contact li + li {
+  margin-top: 15px;
+}
+
+#contact a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1.1rem;
+  color: #fefefe;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#contact a:hover {
+  color: #ff9800;
+}
+
+#contact img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  width: 35px;
+  margin-right: 10px;
+}
+
 #links {
   padding-bottom: 5rem;
 }
@@ -485,9 +547,15 @@ main > section:nth-child(n+2) h1::after {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   text-decoration: none;
   color: #fefefe;
   font-size: 1.1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #links a:hover {

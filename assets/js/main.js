@@ -24,3 +24,43 @@ function showMenu() {
     })
 }
 showMenu()
+
+// Recupera repositórios do Github
+async function getRepoGithub() {
+    const repositorios = await axios('https://api.github.com/users/brunoibarbosa/repos')
+    return repositorios.data
+}
+
+// Cria card e coloca dentro do container passado como parâmetro
+async function createCard(classContainer) {
+    const container = document.querySelector(classContainer)
+    const repos = await getRepoGithub()
+
+
+    for (const key in repos) {
+        const section = document.createElement('section')
+        section.classList.add('card')
+
+        const img = document.createElement('img')
+
+        img.setAttribute('src', `https://raw.githubusercontent.com/brunoibarbosa/${repos[key].name}/main/.github/logo.svg`)
+
+        section.appendChild(img)
+        container.appendChild(section)
+    }
+
+    new Glider(document.querySelector('.js-carousel'), {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        draggable: true,
+        dragVelocity: 2,
+        scrollLock: true,
+        dots: ".js-carousel--dots",
+        arrows: {
+            prev: ".js-carousel--prev",
+            next: ".js-carousel--next",
+        },
+    });
+
+}
+createCard('.repo-github .js-carousel')
