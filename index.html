@@ -6,10 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Bruno Inacio Barbosa</title>
 		<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
-
 		<!-- Meu CSS -->
-		<link rel="stylesheet" href="./assets/css/main.css">
-
+		<link rel="stylesheet" href="./assets/css/main.min.css">
 		<!-- CSS do Glider -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
 	</head>
@@ -31,11 +29,11 @@
 				</section>
 				<nav id="main-navbar">
 					<ul>
-						<li><a href="#home" class="active"><span>Home</span></a></li>
-						<li><a href="#about"><span>Sobre</span></a></li>
-						<li><a href="#portfolio"><span>Portfólio</span></a></li>
-						<li><a href="#contact"><span>Contato</span></a></li>
-						<li><a href="#links"><span>Links</span></a></li>
+						<li class="item-menu home"><a href="#home"><span>Home</span></a></li>
+						<li class="item-menu about"><a href="#about"><span>Sobre</span></a></li>
+						<li class="item-menu portfolio"><a href="#portfolio"><span>Portfólio</span></a></li>
+						<li class="item-menu contact"><a href="#contact"><span>Contato</span></a></li>
+						<li class="item-menu links"><a href="#links"><span>Links</span></a></li>
 					</ul>
 				</nav>
 			</section>
@@ -47,42 +45,52 @@
 					<span>Desenvolvedor Web</span>
 					<a href="#portfolio">Ver Portfólio &#8628;</a>
 				</section>
+				<section class="home-background">
+				</section>
 			</section>
 			<section id="about">
 				<h1 class="section" data-section-name="SOBRE">Sobre</h1>
-				<p>Me chamo Bruno Inacio Barbosa, nasci em 03 de julho de 2000 na cidade de Bariri-SP e atualmente curso
-					Sistemas para Internet na Fatec Jahu.</p>
-				<p>Fascinado por tecnologia desde criança, decidi tomar como esse o caminho da minha vida, pois além de
-					ser uma
-					área que gosto, tenho também muita satisfação em aprender sobre ela.</p>
-				<span>Sempre estudando:</span>
-				<ul>
-					<li class="basic">HTML</li>
-					<li class="basic">CSS</li>
-					<li class="db">MySQL</li>
-					<li class="language">JavaScript</li>
-					<li class="language">PHP</li>
-					<li class="framework">Express.js</li>
-					<li class="software">Node.js</li>
-					<li class="library">React</li>
-					<li class="design">UI Design</li>
-				</ul>
-				<section class="social">
-					<a href="https://github.com/brunoibarbosa" target="_blank"><img src="./assets/img/github.svg"
-							alt="Acessar meu perfl no Github"></a>
-					<a href="https://www.linkedin.com/in/brunoibarbosa" target="_blank"><img
-							src="./assets/img/linkedin.svg" alt="Acessar meu perfil no Linkedin"></a>
+				<section class="content">
+					<p>Me chamo Bruno Inacio Barbosa, nasci em 03 de julho de 2000 na cidade de Bariri-SP e atualmente
+						curso
+						Sistemas para Internet na Fatec Jahu.</p>
+					<p>Fascinado por tecnologia desde criança, decidi tomar como esse o caminho da minha vida, pois além
+						de
+						ser uma
+						área que gosto, tenho também muita satisfação em aprender sobre ela.</p>
+					<span>Sempre estudando:</span>
+					<ul>
+						<li class="basic">HTML</li>
+						<li class="basic">CSS</li>
+						<li class="db">MySQL</li>
+						<li class="language">JavaScript</li>
+						<li class="language">PHP</li>
+						<li class="framework">Express.js</li>
+						<li class="software">Node.js</li>
+						<li class="library">React</li>
+						<li class="design">UI Design</li>
+					</ul>
+					<section class="social">
+						<a href="https://github.com/brunoibarbosa" target="_blank"><img src="./assets/img/github.svg"
+								alt="Acessar meu perfl no Github"></a>
+						<a href="https://www.linkedin.com/in/brunoibarbosa" target="_blank"><img
+								src="./assets/img/linkedin.svg" alt="Acessar meu perfil no Linkedin"></a>
+					</section>
+					<a href="./assets/doc/curriculo.pdf" download>
+						&#x21AA; Veja meu currículo
+					</a>
 				</section>
-				<a href="./assets/doc/curriculo.pdf" download>
-					&#x21AA; Veja meu currículo
-				</a>
 			</section>
 			<section id="portfolio">
 				<h1 class="section" data-section-name="PORTFÓLIO">Portfólio</h1>
 				<section class="repo-github">
 					<section class="js-carousel"></section>
-					<button class="js-carousel--prev">«</button>
-					<button class="js-carousel--next">»</button>
+					<button class="js-carousel--prev">
+						<img src="./assets/img/arrow-right.svg" alt="Voltar um item">
+					</button>
+					<button class="js-carousel--next">
+						<img src="./assets/img/arrow-right.svg" alt="Avançar um item">
+					</button>
 					<section class="js-carousel--dots"></section>
 				</section>
 			</section>
@@ -97,26 +105,22 @@
 							<img src="./assets/img/whatsapp.svg" alt="Iniciar conversa pelo Whatsapp">
 							(14) 98176-0204
 						</a></li>
-					<li><a href="https://github.com/brunoibarbosa" target="_blank">
-							<img src="./assets/img/github.svg" alt="Acessar meu perfl no Github">
-							Github
-						</a></li>
 					<li><a href="https://www.linkedin.com/in/brunoibarbosa" target="_blank">
 							<img src="./assets/img/linkedin.svg" alt="Acessar meu perfil no Linkedin">
-							Linkedin
+							brunoibarbosa
 						</a></li>
 				</ul>
 			</section>
 			<section id="links">
 				<h1 class="section" data-section-name="LINKS">Links</h1>
 				<ul>
-					<li><a href="https://github.com/brunoibarbosa"><img src="./assets/img/github.svg"
-								alt="Acessar meu perfil no Github">Github</a></li>
-					<li><a href="https://www.linkedin.com/in/brunoibarbosa/"><img src="./assets/img/linkedin.svg"
-								alt="Acessar meu perfil no Linkedin">Linkedin</a></li>
-					<li><a href="http://fatecjahu.edu.br/"><img src="./assets/img/fatec-jahu.svg"
+					<li><a target="_blank" href="https://github.com/brunoibarbosa"><img src="./assets/img/github.svg"
+								alt="Acessar meu perfil no Github">GitHub</a></li>
+					<li><a target="_blank" href="https://www.linkedin.com/in/brunoibarbosa/"><img
+								src="./assets/img/linkedin.svg" alt="Acessar meu perfil no Linkedin">LinkedIn</a></li>
+					<li><a target="_blank" href="http://fatecjahu.edu.br/"><img src="./assets/img/fatec-jahu.svg"
 								alt="Acessar site da Fatec Jahu">Fatec Jahu</a></li>
-					<li><a href="http://201.55.33.89/si/#2019-1"><img src="./assets/img/colleagues.svg"
+					<li><a target="_blank" href="http://201.55.33.89/si/#2019-1"><img src="./assets/img/colleagues.svg"
 								alt="Sites da minha turma do curso">Colegas</a></li>
 				</ul>
 			</section>
@@ -125,10 +129,8 @@
 
 		<!-- JS do Axios -->
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 		<!-- JS do Glider -->
 		<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-
 		<!-- Meu JS -->
 		<script src="./assets/js/main.js"></script>
 	</body>

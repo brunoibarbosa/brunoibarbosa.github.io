@@ -1,4 +1,5 @@
 @import 'variaveis';
+@import 'mixins';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
 
@@ -25,6 +26,10 @@ main > section:nth-child(n+2) {
     background: $preto;
     color: $branco;
     text-align: center;
+
+    @include for-tablet() {
+        padding: 6rem 4rem;
+    }
 
     h1 {
         font-size: 2.6rem;
@@ -62,12 +67,24 @@ main > section:nth-child(n+2) {
 }
 
 #main-header {
-    &.sticky .container {
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    position: fixed;
+    transition: box-shadow .4s ease;
+    width: 100%;
 
-        & .menu-toggle {
+    &.sticky {
+        box-shadow: 0 0 8px mix($preto, transparent, 30%);
+        background: $branco;
+
+        .container .menu-toggle {
             background: $cor-principal;
             right: 0;
+        }
+
+        @include for-desktop() {
+            .container {
+                padding: 1rem 4rem;
+            }
         }
     }
 
@@ -76,14 +93,19 @@ main > section:nth-child(n+2) {
         align-items: center; 
         justify-content: space-between;
         width: 100%;
-        max-width: 1400px;
-        position: fixed;
+        position: relative;
         left: 0;
         top: 0;
-        z-index: 10000;
         background: $branco;
         font-size: 1.1rem;
-        transition: padding .5s ease, box-shadow .4s ease;
+        transition: padding .5s ease;
+
+        @include for-desktop() {
+            max-width: calc(1250px + 8rem);
+            padding: 3rem 6rem;
+            margin: 0 auto;
+            background: none;
+        }
     }
 
     .follow-me {
@@ -110,6 +132,28 @@ main > section:nth-child(n+2) {
         span {
             display: none;
         }
+
+        @include for-desktop() {
+            position: static;
+            visibility: visible;
+            opacity: 1;
+            display: flex;
+
+            a {
+                background: none;
+                width: 40px;
+                height: 40px;
+
+                img {
+                    filter: none;
+                }
+            }
+
+            span {
+                display: inline-block;
+                margin-left: 10px;
+            }
+        }
     }
 
     .menu-toggle {
@@ -122,6 +166,10 @@ main > section:nth-child(n+2) {
         padding: 10px 11px;
         cursor: pointer;
         transition: .6s ease;
+
+        @include for-desktop() {
+            display: none;
+        }
 
         div {
             width: 45px;
@@ -213,12 +261,16 @@ main > section:nth-child(n+2) {
         height: 100vh;
         width: 70vw;
         text-align: center;
+
+        @include for-desktop() {
+            background: none;
+        }
     }
 
     a {
         text-decoration: none;
         color: $preto;
-        border-bottom: 1px solid rgba(18, 18, 18, 0.15);
+        border-bottom: 1px solid mix($preto, $branco, 15%);
         display: block;
         padding: 2rem 0;
         font-size: 1.3rem;
@@ -247,6 +299,42 @@ main > section:nth-child(n+2) {
             &::after {
                 opacity: 1;
                 right: -20px;
+            }
+        }
+    }
+
+    @include for-desktop() {
+        position: static;
+
+        ul {
+            display: flex;
+            height: auto;
+            width: auto;
+            overflow-y: visible;
+        }
+
+        a {
+            font-size: 1rem;
+            padding: 1rem 0;
+            border-bottom: 0;
+            margin: 0 10px;
+
+            span::after {
+                border-radius: 0;
+                left: 0;
+                top: calc(100% + 5px);
+                transform: scaleX(0);
+                transform-origin: bottom right;
+                height: 2px;
+                width: 100%;
+                opacity: 1;
+                transition: transform .3s ease;
+            }
+
+            &.active span::after,
+            &:hover span::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
             }
         }
     }
@@ -317,10 +405,14 @@ main > section:nth-child(n+2) {
 }
 
 #about {
+    .content {
+        max-width: 1250px;
+        margin: 0 auto;
+    }
+
     p {
         font-weight: 300;
         font-size: 1.25rem;
-        max-width: 330px;
 
         &:first-of-type {
             margin: 4rem auto 0;
@@ -358,7 +450,7 @@ main > section:nth-child(n+2) {
         &.design { border-color:#f39c12; }
     }
 
-    & > a {
+    .content > a {
         padding: .8rem 1rem;
         color: $branco;
         text-decoration: none;
@@ -383,16 +475,94 @@ main > section:nth-child(n+2) {
 #portfolio {
     .repo-github {
         color: $branco;
+        margin: 4rem auto;
+        position: relative;
+        max-width: 1250px;
 
         .card {
-            width: 100%;
-            min-height: 300px;
-
             @include flex();
+            width: 100%;
+            flex-direction: column;
+
+            & > * {
+                padding: 1rem;
+            }
+
+            img {
+                min-height: 65px;
+                max-height: 100px;
+            }
+
+            a {
+                color: $branco;
+                background: $cor-principal;
+                text-decoration: none;
+                padding: .8rem 1rem;
+                margin: 1rem;
+                transition: padding .3s ease;
+
+                &:hover {
+                    padding: .8rem 2rem;
+                }
+            }
         }
 
         .js-carousel::-webkit-scrollbar {
             display: none;
+        }
+
+        .js-carousel--prev {
+            left: 0;
+
+            img {
+                transform: rotate(180deg);
+            }
+        }
+
+        .js-carousel--next {
+            right: 0;
+        }
+        
+        .js-carousel--prev,
+        .js-carousel--next {
+            background: none;
+            border: 0;
+            cursor: pointer;
+
+            img {
+                width: 30px;
+            }
+            
+            &.disabled {
+                opacity: .1;
+                cursor: initial;
+            }
+        }
+
+        .js-carousel--prev,
+        .js-carousel--next,
+        .js-carousel--dots {
+            @include flex();
+            position: absolute;
+            height: 36px;
+            bottom: -50px;
+        }
+
+        .js-carousel--dots { 
+            left: 50%;
+            transform: translateX(-50%);
+            
+            .glider-dot {
+                background: $branco;
+                width: 5px;
+                height: 5px;
+                margin: 4px;
+                transition: width .1s linear;
+            }
+
+            .active {
+                width: 20px;
+            }
         }
     }
 }
@@ -413,6 +583,7 @@ main > section:nth-child(n+2) {
         color: $branco;
         text-decoration: none;
         width: fit-content;
+        overflow-wrap: anywhere;
 
         &:hover {
             color: $cor-principal;
