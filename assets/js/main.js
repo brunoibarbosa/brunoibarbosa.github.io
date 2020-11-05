@@ -90,7 +90,7 @@ async function createCards() {
             const a = document.createElement('a')
             a.setAttribute('href', html_url)
             a.setAttribute('target', '_blank')
-            a.textContent = 'Ver mais no Github'
+            a.textContent = 'Ver mais no GitHub'
 
             section.appendChild(img)
             section.appendChild(p)
