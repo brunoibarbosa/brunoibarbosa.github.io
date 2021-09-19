@@ -4,633 +4,784 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-html, body, main  {
-    min-height: 100%;
-    scroll-behavior: smooth;
+html,
+body,
+main {
+  min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
-main > section:nth-child(n+2) {
-    padding: 6rem 2rem;
-    overflow: hidden;
-    background: $preto;
-    color: $branco;
-    text-align: center;
+main>section:nth-child(n+2) {
+  padding: 6rem 2rem;
+  overflow: hidden;
+  background: $preto;
+  color: $branco;
+  text-align: center;
 
-    @include for-tablet() {
-        padding: 6rem 4rem;
+  @include for-tablet() {
+    padding: 6rem 4rem;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+
+    &::before {
+      display: block;
+      position: absolute;
+      background-color: transparent;
+      content: attr(data-section-name);
+      color: rgba(254, 254, 254, 0.03);
+      font-size: 3em;
+      font-weight: 800;
+      left: 50%;
+      top: 35%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
 
-    h1 {
-        font-size: 2.6rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        position: relative;
-        width: fit-content;
-        margin: 0 auto;
-
-        &::before {
-            display: block;
-            position: absolute;
-            background-color: transparent;
-            content: attr(data-section-name);
-            color: rgba(254, 254, 254, 0.03);
-            font-size: 3em;
-            font-weight: 800;
-            left: 50%;
-            top: 35%;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            background-color: $cor-principal;
-            width: 100%;
-            height: 0.4rem;
-            bottom: -0.5rem;
-            left: 0;
-        }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: $cor-principal;
+      width: 100%;
+      height: 0.4rem;
+      bottom: -0.5rem;
+      left: 0;
     }
+  }
 }
 
 #main-header {
-    z-index: 10000;
-    position: fixed;
-    transition: box-shadow .4s ease;
-    width: 100%;
+  z-index: 10000;
+  position: fixed;
+  transition: box-shadow .4s ease;
+  width: 100%;
 
-    &.sticky {
-        box-shadow: 0 0 8px mix($preto, transparent, 30%);
-        background: $branco;
+  &.sticky {
+    box-shadow: 0 0 8px mix($preto, transparent, 30%);
+    background: $branco;
 
-        .container .menu-toggle {
-            background: $cor-principal;
-            right: 0;
-        }
-
-        @include for-desktop() {
-            .container {
-                padding: 1rem 4rem;
-            }
-        }
-    }
-
-    .container {
-        display: flex;
-        align-items: center; 
-        justify-content: space-between;
-        width: 100%;
-        position: relative;
-        left: 0;
-        top: 0;
-        background: $branco;
-        font-size: 1.1rem;
-        transition: padding .5s ease;
-
-        @include for-desktop() {
-            max-width: calc(1250px + 8rem);
-            padding: 3rem 6rem;
-            margin: 0 auto;
-            background: none;
-        }
-    }
-
-    .follow-me {
-        align-items: center;
-        position: fixed;
-        top: 67px;
-        right: -10rem;
-        visibility: hidden;
-        opacity: 0;
-        transition: all .6s ease;
-
-        a {
-            @include flex();
-            background: $preto;
-            width: 50px;
-            height: 50px;
-
-            img {
-                filter: invert(1);
-                width: 30px;
-            }
-        }
-        
-        span {
-            display: none;
-        }
-
-        @include for-desktop() {
-            position: static;
-            visibility: visible;
-            opacity: 1;
-            display: flex;
-
-            a {
-                background: none;
-                width: 40px;
-                height: 40px;
-
-                img {
-                    filter: none;
-                }
-            }
-
-            span {
-                display: inline-block;
-                margin-left: 10px;
-            }
-        }
-    }
-
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        height: 67px;
-        width: 67px;
-        right: 50px;
-        top: 7%;
-        padding: 10px 11px;
-        cursor: pointer;
-        transition: .6s ease;
-
-        @include for-desktop() {
-            display: none;
-        }
-
-        div {
-            width: 45px;
-            height: 2px;
-            background-color: $preto;
-            margin: 11px 0 11px auto;
-            transition: all .5s;
-            pointer-events: none;
-    
-            &:nth-child(1) {width: 40px;}
-            &:nth-child(3) {width: 32px;}
-        }
-    
-        &::before {
-            content: 'MENU';
-            position: absolute;
-            background: $cor-principal;
-            color: $preto;
-            font-size: .6rem;
-            font-weight: 600;
-            background: none;
-            transform: rotate(-90deg);
-            right: -32%;
-            top: 44%;
-        }
-
-        &.active {
-            top: 0;
-            right: 70% !important;
-            background: $cor-principal;
-
-            div:nth-child(1){width: 45px; transform: rotate(-45deg) translate(-9px, 9px);}
-            div:nth-child(2){opacity: 0;}
-            div:nth-child(3){width: 45px; transform: rotate(45deg) translate(-9px, -9px);}
-
-            &:hover div {
-                width: initial !important;
-            }
-        }
-
-        &:hover div {
-            &:nth-child(1) {width: 30px;}
-            &:nth-child(2) {width: 20px;}
-            &:nth-child(3) {width: 37px;}
-        }
-
-        &.active + .follow-me {
-            visibility: visible;
-            opacity: 1;
-            right: 70%;
-            top: 67px;
-
-            & + #main-navbar {
-                right: 0;
-
-                & + .overlay {
-                    width: 50vw;
-                    right: 50vw;
-                }
-            }
-        }
-    }
-
-    .overlay {
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 100vh;
-        background: lighten($preto, 20%);
-        opacity: .4;
-        right: -100vw;
-        top: 0;
-        z-index: -1;
-        pointer-events: none;
-        transition: .4s;
-    }
-}
-
-#main-navbar {
-    position: fixed;
-    right: -75%;
-    top: 0;
-    transition: right .6s ease;
-
-    ul {
-        text-transform: uppercase;
-        overflow-y: auto;
-        background: #fefefe;
-        height: 100vh;
-        width: 70vw;
-        text-align: center;
-
-        @include for-desktop() {
-            background: none;
-        }
-    }
-
-    a {
-        text-decoration: none;
-        color: $preto;
-        border-bottom: 1px solid mix($preto, $branco, 15%);
-        display: block;
-        padding: 2rem 0;
-        font-size: 1.3rem;
-        font-weight: 400;
-
-        span {
-            position: relative;
-
-            &::after {
-                content: '';
-                position: absolute;
-                background-color: #ff9800;
-                opacity: 0;
-                border-radius: 50%;
-                width: 7px;
-                height: 7px;
-                top: calc(50% - 2px);
-                right: -60px;
-                transform: translateY(-50%);
-                transition: .3s ease;
-            }
-        }
-
-        &.active span,
-        &:hover span {
-            &::after {
-                opacity: 1;
-                right: -20px;
-            }
-        }
+    .container .menu-toggle {
+      background: $cor-principal;
+      right: 0;
     }
 
     @include for-desktop() {
-        position: static;
-
-        ul {
-            display: flex;
-            height: auto;
-            width: auto;
-            overflow-y: visible;
-        }
-
-        a {
-            font-size: 1rem;
-            padding: 1rem 0;
-            border-bottom: 0;
-            margin: 0 10px;
-
-            span::after {
-                border-radius: 0;
-                left: 0;
-                top: calc(100% + 5px);
-                transform: scaleX(0);
-                transform-origin: bottom right;
-                height: 2px;
-                width: 100%;
-                opacity: 1;
-                transition: transform .3s ease;
-            }
-
-            &.active span::after,
-            &:hover span::after {
-                transform: scaleX(1);
-                transform-origin: bottom left;
-            }
-        }
+      .container {
+        padding: 1rem 4rem;
+      }
     }
-}
+  }
 
-#home {
-    @include flex();
-    text-align: center;
-    min-height: 100vh;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    background: $branco;
+    font-size: 1.1rem;
+    transition: padding .5s ease;
+
+    @include for-desktop() {
+      max-width: calc(1250px + 8rem);
+      padding: 3rem 6rem;
+      margin: 0 auto;
+      background: none;
+    }
+  }
+
+  .follow-me {
+    align-items: center;
+    position: fixed;
+    top: 67px;
+    right: -10rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .6s ease;
+
+    a {
+      @include flex();
+      background: $preto;
+      width: 50px;
+      height: 50px;
+
+      svg {
+        width: 30px;
+        fill: $branco;
+      }
+
+      &:hover svg {
+        fill: $cor-principal;
+      }
+    }
 
     span {
+      display: none;
+    }
+
+    @include for-desktop() {
+      position: static;
+      visibility: visible;
+      opacity: 1;
+      display: flex;
+
+      a {
+        background: none;
+        width: 40px;
+        height: 40px;
+
+        svg {
+          fill: $preto;
+        }
+      }
+
+      span {
         display: inline-block;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    height: 67px;
+    width: 67px;
+    right: 50px;
+    top: 7%;
+    padding: 10px 11px;
+    cursor: pointer;
+    transition: .6s ease;
+
+    @include for-desktop() {
+      display: none;
     }
 
-    .intro {
-        h1 {
-            line-height: 3.6rem;
-            font-size: 3.6rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            color: $preto;
+    div {
+      width: 45px;
+      height: 2px;
+      background-color: $preto;
+      margin: 11px 0 11px auto;
+      transition: all .5s;
+      pointer-events: none;
 
-            span {
-                font-weight: 800;
-                display: block;
-                position: relative;
+      &:nth-child(1) {
+        width: 40px;
+      }
 
-                &::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    background-color: #ff9800;
-                    width: 101%;
-                    height: 40%;
-                    bottom: 0;
-                    z-index: -1;
-                }
-            }
-        }
-
-        & > span {
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            background: $preto;
-            color: $branco;
-            padding: 0.5rem 1rem;
-            margin: 2rem 0;
-            width: 310px;
-        }
-
-        a {
-            display: block;
-            text-transform: capitalize;
-            color: $preto;
-            border: 2px solid $preto;
-            padding: .5rem 1rem;
-            text-decoration: none;
-            font-weight: 600;
-            max-width: 160px;
-            margin: 0 auto;
-
-            &:hover {
-                background: $preto;
-                color: $branco;
-            } 
-        }
+      &:nth-child(3) {
+        width: 32px;
+      }
     }
+
+    &::before {
+      content: 'MENU';
+      position: absolute;
+      background: $cor-principal;
+      color: $preto;
+      font-size: .6rem;
+      font-weight: 600;
+      background: none;
+      transform: rotate(-90deg);
+      right: -32%;
+      top: 44%;
+    }
+
+    &.active {
+      top: 0;
+      right: 70% !important;
+      background: $cor-principal;
+
+      div:nth-child(1) {
+        width: 45px;
+        transform: rotate(-45deg) translate(-9px, 9px);
+      }
+
+      div:nth-child(2) {
+        opacity: 0;
+      }
+
+      div:nth-child(3) {
+        width: 45px;
+        transform: rotate(45deg) translate(-9px, -9px);
+      }
+
+      &:hover div {
+        width: initial !important;
+      }
+    }
+
+    &:hover div {
+      &:nth-child(1) {
+        width: 30px;
+      }
+
+      &:nth-child(2) {
+        width: 20px;
+      }
+
+      &:nth-child(3) {
+        width: 37px;
+      }
+    }
+
+    &.active+.follow-me {
+      visibility: visible;
+      opacity: 1;
+      right: 70%;
+      top: 67px;
+
+      &+#main-navbar {
+        right: 0;
+
+        &+.overlay {
+          width: 50vw;
+          right: 50vw;
+        }
+      }
+    }
+  }
+
+  .overlay {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 100vh;
+    background: lighten($preto, 20%);
+    opacity: .4;
+    right: -100vw;
+    top: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: .4s;
+  }
 }
 
-#about {
-    .content {
-        max-width: 1250px;
-        margin: 0 auto;
+#main-navbar {
+  position: fixed;
+  right: -75%;
+  top: 0;
+  transition: right .6s ease;
+
+  ul {
+    text-transform: uppercase;
+    overflow-y: auto;
+    background: $branco;
+    height: 100vh;
+    width: 70vw;
+    text-align: center;
+
+    @include for-desktop() {
+      background: none;
     }
+  }
 
-    p {
-        font-weight: 300;
-        font-size: 1.25rem;
-
-        &:first-of-type {
-            margin: 4rem auto 0;
-        }
-
-        & + p {
-            margin: 1rem auto 3rem;
-        }
-    }
+  a {
+    text-decoration: none;
+    color: $preto;
+    border-bottom: 1px solid mix($preto, $branco, 15%);
+    display: block;
+    padding: 2rem 0;
+    font-size: 1.3rem;
+    font-weight: 400;
 
     span {
-        font-size: 1.2rem;
-        font-weight: 300;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: $cor-principal;
+        opacity: 0;
+        border-radius: 50%;
+        width: 7px;
+        height: 7px;
+        top: calc(50% - 2px);
+        right: -60px;
+        transform: translateY(-50%);
+        transition: .3s ease;
+      }
     }
+
+    &.active span,
+    &:hover span {
+      &::after {
+        opacity: 1;
+        right: -20px;
+      }
+    }
+  }
+
+  @include for-desktop() {
+    position: static;
 
     ul {
-        margin: 1rem 0;
-        @include flex();
-        flex-wrap: wrap;
-    }
-
-    li {
-        background: $branco;
-        color: $preto;
-        padding: .5rem;
-        margin: 5px;
-        border-left: 5px solid #fff;
-
-        &.basic { border-color: #f1c40f; }
-        &.db { border-color: #bdc3c7; }
-        &.language { border-color:#e74c3c; }
-        &.framework { border-color: #16a085; }
-        &.software { border-color:#2ecc71; }
-        &.library { border-color: #3498db; }
-        &.design { border-color:#f39c12; }
-    }
-
-    .content > a {
-        padding: .8rem 1rem;
-        color: $branco;
-        text-decoration: none;
-        background: $cor-principal;
-        transition: padding .3s ease;
-
-        &:hover {
-            padding: .8rem 2rem;
-        }
-    }
-
-    .social {
-        margin: 3rem 0;
-
-        img {
-            filter: invert(1);
-            width: 45px;
-        }
-    }
-}
-
-#portfolio {
-    .repo-github {
-        color: $branco;
-        margin: 4rem auto;
-        position: relative;
-        max-width: 1250px;
-
-        .card {
-            @include flex();
-            width: 100%;
-            flex-direction: column;
-
-            & > * {
-                padding: 1rem;
-            }
-
-            img {
-                min-height: 65px;
-                max-height: 100px;
-            }
-
-            a {
-                color: $branco;
-                background: $cor-principal;
-                text-decoration: none;
-                padding: .8rem 1rem;
-                margin: 1rem;
-                transition: padding .3s ease;
-
-                &:hover {
-                    padding: .8rem 2rem;
-                }
-            }
-        }
-
-        .js-carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .js-carousel--prev {
-            left: 0;
-
-            img {
-                transform: rotate(180deg);
-            }
-        }
-
-        .js-carousel--next {
-            right: 0;
-        }
-        
-        .js-carousel--prev,
-        .js-carousel--next {
-            background: none;
-            border: 0;
-            cursor: pointer;
-
-            img {
-                width: 30px;
-            }
-            
-            &.disabled {
-                opacity: .1;
-                cursor: initial;
-            }
-        }
-
-        .js-carousel--prev,
-        .js-carousel--next,
-        .js-carousel--dots {
-            @include flex();
-            position: absolute;
-            height: 36px;
-            bottom: -50px;
-        }
-
-        .js-carousel--dots { 
-            left: 50%;
-            transform: translateX(-50%);
-            
-            .glider-dot {
-                background: $branco;
-                width: 5px;
-                height: 5px;
-                margin: 4px;
-                transition: width .1s linear;
-            }
-
-            .active {
-                width: 20px;
-            }
-        }
-    }
-}
-
-#contact {
-    ul {
-        margin-top: 4rem;
-    }
-    
-    li + li {
-        margin-top: 15px;
+      display: flex;
+      height: auto;
+      width: auto;
+      overflow-y: visible;
     }
 
     a {
-        @include flex();
-        display: inline-flex;
-        font-size: 1.1rem;
-        color: $branco;
-        text-decoration: none;
-        width: fit-content;
-        overflow-wrap: anywhere;
+      font-size: 1rem;
+      padding: 1rem 0;
+      border-bottom: 0;
+      margin: 0 10px;
 
-        &:hover {
-            color: $cor-principal;
-        }
-    }
+      span::after {
+        border-radius: 0;
+        left: 0;
+        top: calc(100% + 5px);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        height: 2px;
+        width: 100%;
+        opacity: 1;
+        transition: transform .3s ease;
+      }
 
-    img {
-        filter: invert(1);
-        width: 35px;
-        margin-right: 10px;
+      &.active span::after,
+      &:hover span::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
     }
+  }
 }
 
-#links {
-    padding-bottom: 5rem;
+#home {
+  @include flex();
+  text-align: center;
+  min-height: 100vh;
+
+  span {
+    display: inline-block;
+  }
+
+  .intro {
+    h1 {
+      line-height: 3.6rem;
+      font-size: 3.6rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: $preto;
+
+      span {
+        font-weight: 800;
+        display: block;
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: $cor-principal;
+          width: 101%;
+          height: 40%;
+          bottom: 0;
+          z-index: -1;
+        }
+      }
+    }
+
+    &>span {
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      background: $preto;
+      color: $branco;
+      padding: 0.5rem 1rem;
+      margin: 2rem 0;
+      width: 310px;
+    }
+
+    a {
+      display: block;
+      text-transform: capitalize;
+      color: $preto;
+      border: 2px solid $preto;
+      padding: .5rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      max-width: 160px;
+      margin: 0 auto;
+
+      &:hover {
+        background: $preto;
+        color: $branco;
+      }
+    }
+  }
+}
+
+#about {
+  .content {
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: 1.25rem;
+
+    &:first-of-type {
+      margin: 4rem auto 0;
+    }
+
+    &+p {
+      margin: 1rem auto 3rem;
+    }
+  }
+
+  span {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .learning-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    &>section {
+      margin: .5rem 0;
+      background: rgba(250, 250, 250, 0.02);
+      padding: .5rem;
+      transition: background .2s ease;
+
+      &:hover {
+        background: rgba(250, 250, 250, 0.05);
+      }
+    }
+
+    h4 {
+      margin: .5rem 0 .2rem;
+      font-weight: 500;
+      font-size: .8rem;
+      text-transform: uppercase;
+    }
 
     ul {
-        margin-top: 4rem;
+      margin: .5rem 0;
+      @include flex();
+      flex-wrap: wrap;
     }
 
     li {
-        margin: 1.2rem 0;
+      background: $branco;
+      color: $preto;
+      padding: .5rem;
+      margin: 5px;
+      border-left: 5px solid #fff;
+
+      &.basic {
+        border-color: #f1c40f;
+      }
+
+      &.db {
+        border-color: #bdc3c7;
+      }
+
+      &.language {
+        border-color: #e74c3c;
+      }
+
+      &.framework {
+        border-color: #16a085;
+      }
+
+      &.software {
+        border-color: #2ecc71;
+      }
+
+      &.library {
+        border-color: #3498db;
+      }
+
+      &.design {
+        border-color: #6812f3;
+      }
     }
 
-    a { 
+    @include for-desktop() {
+      flex-direction: row;
+
+      &>section {
         @include flex();
-        display: inline-flex;
-        text-decoration: none;
-        color: $branco;
-        font-size: 1.1rem;
-        width: fit-content;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1 1 0px;
 
-        &:hover {
-            color: $cor-principal;
+        &:nth-child(2) {
+          margin: .5rem 1rem;
         }
-
-        img {
-            width: 35px;
-            filter: invert(1);
-            margin-right: 15px;
-        }
+      }
     }
+  }
+
+  .content>a {
+    padding: .8rem 1rem;
+    color: $branco;
+    text-decoration: none;
+    background: $cor-principal;
+    transition: padding .3s ease;
+
+    &:hover {
+      padding: .8rem 2rem;
+    }
+  }
+
+  .social {
+    margin: 3rem 0;
+
+    a:hover svg {
+      fill: $cor-principal;
+    }
+
+    svg {
+      width: 45px;
+    }
+  }
+}
+
+#portfolio {
+  h3 {
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 1rem 0 1rem 11px;
+    font-size: .9rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: $cor-principal;
+      top: 0;
+      left: -10px;
+      width: 3px;
+      height: 100%;
+    }
+  }
+
+  &>section {
+    color: $branco;
+    margin: 4rem auto;
+    position: relative;
+    max-width: 1250px;
+
+    &>section:first-of-type {
+      background: rgba(250, 250, 250, 0.02);
+      padding: 1rem 0 5rem;
+      transition: background .2s ease;
+
+      &:hover {
+        background: rgba(250, 250, 250, 0.05);
+      }
+    }
+
+    &.portfolio-design .card h2 {
+      font-size: 1.2rem;
+      padding: .5rem 0 0;
+      font-weight: 600;
+    }
+  }
+
+  .card {
+    @include flex();
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+
+    &>* {
+      padding: 1rem;
+    }
+
+    img {
+      min-height: 65px;
+      max-height: 100px;
+    }
+
+    a {
+      color: $branco;
+      background: $cor-principal;
+      text-decoration: none;
+      padding: .8rem 1rem;
+      margin: 1rem;
+      transition: padding .3s ease;
+
+      &:hover {
+        padding: .8rem 2rem;
+      }
+
+      &:nth-child(6) {
+        margin-top: 0;
+      }
+    }
+
+    p>a {
+      background: none;
+      padding: 0;
+      color: $cor-principal;
+      margin: 0;
+      display: inline-block;
+
+      &:hover {
+        padding: 0;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .js-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .js-carousel--prev {
+    left: 1.5rem;
+
+    img {
+      transform: rotate(180deg);
+    }
+  }
+
+  .js-carousel--next {
+    right: 1.5rem;
+  }
+
+  .js-carousel--prev,
+  .js-carousel--next {
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+    }
+
+    &.disabled {
+      opacity: .1;
+      cursor: initial;
+    }
+  }
+
+  .js-carousel--prev,
+  .js-carousel--next,
+  .js-carousel--dots {
+    @include flex();
+    position: absolute;
+    height: 36px;
+    bottom: 1rem;
+  }
+
+  .js-carousel--dots {
+    left: 50%;
+    transform: translateX(-50%);
+
+    .glider-dot {
+      background: $branco;
+      width: 5px;
+      height: 5px;
+      margin: 4px;
+      transition: width .1s linear;
+    }
+
+    .active {
+      width: 20px;
+    }
+  }
+}
+
+#contact {
+  ul {
+    margin-top: 4rem;
+  }
+
+  li+li {
+    margin-top: 15px;
+  }
+
+  a {
+    @include flex();
+    display: inline-flex;
+    font-size: 1.1rem;
+    color: $branco;
+    text-decoration: none;
+    width: fit-content;
+    overflow-wrap: anywhere;
+
+    &:hover {
+      color: $cor-principal;
+
+      svg,
+      path {
+        fill: $cor-principal;
+      }
+    }
+  }
+
+  svg {
+    width: 35px;
+    margin-right: 10px;
+  }
+}
+
+#links {
+  padding-bottom: 5rem;
+
+  ul {
+    margin-top: 4rem;
+  }
+
+  li {
+    margin: 1.2rem 0;
+  }
+
+  a {
+    @include flex();
+    display: inline-flex;
+    text-decoration: none;
+    color: $branco;
+    font-size: 1.1rem;
+    width: fit-content;
+
+    &:hover {
+      color: $cor-principal;
+
+      svg {
+        fill: $cor-principal;
+      }
+    }
+
+    svg {
+      width: 35px;
+      margin-right: 10px;
+    }
+  }
 }
 
 #footer-main {
-    padding: 1rem 0;
-    color: $branco;
-    text-align: center;
-    background: $cor-principal;
+  padding: 1rem 0;
+  color: $branco;
+  text-align: center;
+  background: $cor-principal;
 }
