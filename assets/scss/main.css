@@ -489,13 +489,14 @@ main > section:nth-child(n+2) h1::after {
 #about p {
   font-weight: 300;
   font-size: 1.25rem;
+  margin: 1rem 0;
 }
 
 #about p:first-of-type {
   margin: 4rem auto 0;
 }
 
-#about p + p {
+#about p:last-of-type {
   margin: 1rem auto 3rem;
 }
 

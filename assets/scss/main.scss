@@ -442,12 +442,13 @@ main>section:nth-child(n+2) {
   p {
     font-weight: 300;
     font-size: 1.25rem;
+    margin: 1rem 0;
 
     &:first-of-type {
       margin: 4rem auto 0;
     }
 
-    &+p {
+    &:last-of-type {
       margin: 1rem auto 3rem;
     }
   }

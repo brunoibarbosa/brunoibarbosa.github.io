@@ -279,3 +279,28 @@ async function carouselGenerator() {
   }
 }
 carouselGenerator()
+
+function goTo(href) {
+  const pathname = href.slice(href.length, href.lastIndexOf('/'))
+
+  if ((href.indexOf('/') < 0) || pathname === window.location.pathname.replace('/', '')) {
+    const destino = document.querySelector(href.replace('/', ''))
+    if (destino) {
+      history.replaceState(undefined, undefined, href)
+      window.scrollTo(0, destino.offsetTop - 75);
+    }
+  } else
+    window.location = href
+}
+
+document.querySelectorAll('.go-to').forEach(el => {
+  el.addEventListener('click', function (event) {
+    event.preventDefault()
+    goTo(this.getAttribute('href'))
+  })
+})
+
+window.addEventListener('load', () => {
+  if (window.location.hash !== '')
+    goTo(window.location.hash)
+})
