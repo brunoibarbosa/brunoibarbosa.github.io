@@ -8,7 +8,9 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-html, body, main {
+html,
+body,
+main {
   min-height: 100%;
   scroll-behavior: smooth;
 }
@@ -151,10 +153,13 @@ main > section:nth-child(n+2) h1::after {
   height: 50px;
 }
 
-#main-header .follow-me a img {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+#main-header .follow-me a svg {
   width: 30px;
+  fill: #fefefe;
+}
+
+#main-header .follow-me a:hover svg {
+  fill: #ff9800;
 }
 
 #main-header .follow-me span {
@@ -175,9 +180,8 @@ main > section:nth-child(n+2) h1::after {
     width: 40px;
     height: 40px;
   }
-  #main-header .follow-me a img {
-    -webkit-filter: none;
-            filter: none;
+  #main-header .follow-me a svg {
+    fill: #121212;
   }
   #main-header .follow-me span {
     display: inline-block;
@@ -485,23 +489,54 @@ main > section:nth-child(n+2) h1::after {
 #about p {
   font-weight: 300;
   font-size: 1.25rem;
+  margin: 1rem 0;
 }
 
 #about p:first-of-type {
   margin: 4rem auto 0;
 }
 
-#about p + p {
+#about p:last-of-type {
   margin: 1rem auto 3rem;
 }
 
 #about span {
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 600;
 }
 
-#about ul {
-  margin: 1rem 0;
+#about .learning-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1rem;
+}
+
+#about .learning-list > section {
+  margin: .5rem 0;
+  background: rgba(250, 250, 250, 0.02);
+  padding: .5rem;
+  -webkit-transition: background .2s ease;
+  transition: background .2s ease;
+}
+
+#about .learning-list > section:hover {
+  background: rgba(250, 250, 250, 0.05);
+}
+
+#about .learning-list h4 {
+  margin: .5rem 0 .2rem;
+  font-weight: 500;
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+#about .learning-list ul {
+  margin: .5rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -515,7 +550,7 @@ main > section:nth-child(n+2) h1::after {
       flex-wrap: wrap;
 }
 
-#about li {
+#about .learning-list li {
   background: #fefefe;
   color: #121212;
   padding: .5rem;
@@ -523,32 +558,65 @@ main > section:nth-child(n+2) h1::after {
   border-left: 5px solid #fff;
 }
 
-#about li.basic {
+#about .learning-list li.basic {
   border-color: #f1c40f;
 }
 
-#about li.db {
+#about .learning-list li.db {
   border-color: #bdc3c7;
 }
 
-#about li.language {
+#about .learning-list li.language {
   border-color: #e74c3c;
 }
 
-#about li.framework {
+#about .learning-list li.framework {
   border-color: #16a085;
 }
 
-#about li.software {
+#about .learning-list li.software {
   border-color: #2ecc71;
 }
 
-#about li.library {
+#about .learning-list li.library {
   border-color: #3498db;
 }
 
-#about li.design {
-  border-color: #f39c12;
+#about .learning-list li.design {
+  border-color: #6812f3;
+}
+
+@media (min-width: 900px) {
+  #about .learning-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  #about .learning-list > section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+            flex: 1 1 0px;
+  }
+  #about .learning-list > section:nth-child(2) {
+    margin: .5rem 1rem;
+  }
 }
 
 #about .content > a {
@@ -568,20 +636,58 @@ main > section:nth-child(n+2) h1::after {
   margin: 3rem 0;
 }
 
-#about .social img {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+#about .social a:hover svg {
+  fill: #ff9800;
+}
+
+#about .social svg {
   width: 45px;
 }
 
-#portfolio .repo-github {
+#portfolio h3 {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 1rem 0 1rem 11px;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+#portfolio h3::before {
+  content: '';
+  position: absolute;
+  background: #ff9800;
+  top: 0;
+  left: -10px;
+  width: 3px;
+  height: 100%;
+}
+
+#portfolio > section {
   color: #fefefe;
   margin: 4rem auto;
   position: relative;
   max-width: 1250px;
 }
 
-#portfolio .repo-github .card {
+#portfolio > section > section:first-of-type {
+  background: rgba(250, 250, 250, 0.02);
+  padding: 1rem 0 5rem;
+  -webkit-transition: background .2s ease;
+  transition: background .2s ease;
+}
+
+#portfolio > section > section:first-of-type:hover {
+  background: rgba(250, 250, 250, 0.05);
+}
+
+#portfolio > section.portfolio-design .card h2 {
+  font-size: 1.2rem;
+  padding: .5rem 0 0;
+  font-weight: 600;
+}
+
+#portfolio .card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -596,18 +702,19 @@ main > section:nth-child(n+2) h1::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-#portfolio .repo-github .card > * {
   padding: 1rem;
 }
 
-#portfolio .repo-github .card img {
+#portfolio .card > * {
+  padding: 1rem;
+}
+
+#portfolio .card img {
   min-height: 65px;
   max-height: 100px;
 }
 
-#portfolio .repo-github .card a {
+#portfolio .card a {
   color: #fefefe;
   background: #ff9800;
   text-decoration: none;
@@ -617,48 +724,65 @@ main > section:nth-child(n+2) h1::after {
   transition: padding .3s ease;
 }
 
-#portfolio .repo-github .card a:hover {
+#portfolio .card a:hover {
   padding: .8rem 2rem;
 }
 
-#portfolio .repo-github .js-carousel::-webkit-scrollbar {
+#portfolio .card a:nth-child(6) {
+  margin-top: 0;
+}
+
+#portfolio .card p > a {
+  background: none;
+  padding: 0;
+  color: #ff9800;
+  margin: 0;
+  display: inline-block;
+}
+
+#portfolio .card p > a:hover {
+  padding: 0;
+  text-decoration: underline;
+}
+
+#portfolio .js-carousel::-webkit-scrollbar {
   display: none;
 }
 
-#portfolio .repo-github .js-carousel--prev {
-  left: 0;
+#portfolio .js-carousel--prev {
+  left: 1.5rem;
 }
 
-#portfolio .repo-github .js-carousel--prev img {
+#portfolio .js-carousel--prev img {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-#portfolio .repo-github .js-carousel--next {
-  right: 0;
+#portfolio .js-carousel--next {
+  right: 1.5rem;
 }
 
-#portfolio .repo-github .js-carousel--prev,
-#portfolio .repo-github .js-carousel--next {
+#portfolio .js-carousel--prev,
+#portfolio .js-carousel--next {
   background: none;
   border: 0;
   cursor: pointer;
 }
 
-#portfolio .repo-github .js-carousel--prev img,
-#portfolio .repo-github .js-carousel--next img {
+#portfolio .js-carousel--prev img,
+#portfolio .js-carousel--next img {
   width: 30px;
 }
 
-#portfolio .repo-github .js-carousel--prev.disabled,
-#portfolio .repo-github .js-carousel--next.disabled {
+#portfolio .js-carousel--prev.disabled,
+#portfolio .js-carousel--next.disabled {
   opacity: .1;
   cursor: initial;
 }
 
-#portfolio .repo-github .js-carousel--prev,
-#portfolio .repo-github .js-carousel--next,
-#portfolio .repo-github .js-carousel--dots {
+#portfolio .js-carousel--prev,
+#portfolio .js-carousel--next,
+#portfolio .js-carousel--dots {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -670,16 +794,16 @@ main > section:nth-child(n+2) h1::after {
           justify-content: center;
   position: absolute;
   height: 36px;
-  bottom: -50px;
+  bottom: 1rem;
 }
 
-#portfolio .repo-github .js-carousel--dots {
+#portfolio .js-carousel--dots {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
 
-#portfolio .repo-github .js-carousel--dots .glider-dot {
+#portfolio .js-carousel--dots .glider-dot {
   background: #fefefe;
   width: 5px;
   height: 5px;
@@ -688,7 +812,7 @@ main > section:nth-child(n+2) h1::after {
   transition: width .1s linear;
 }
 
-#portfolio .repo-github .js-carousel--dots .active {
+#portfolio .js-carousel--dots .active {
   width: 20px;
 }
 
@@ -726,9 +850,12 @@ main > section:nth-child(n+2) h1::after {
   color: #ff9800;
 }
 
-#contact img {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+#contact a:hover svg,
+#contact a:hover path {
+  fill: #ff9800;
+}
+
+#contact svg {
   width: 35px;
   margin-right: 10px;
 }
@@ -770,11 +897,13 @@ main > section:nth-child(n+2) h1::after {
   color: #ff9800;
 }
 
-#links a img {
+#links a:hover svg {
+  fill: #ff9800;
+}
+
+#links a svg {
   width: 35px;
-  -webkit-filter: invert(1);
-          filter: invert(1);
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 #footer-main {
